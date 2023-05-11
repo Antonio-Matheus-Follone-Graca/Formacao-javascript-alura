@@ -6,10 +6,6 @@ function tocar_audio(id){
     /* outra forma de executar o aúdio
     audio = document.querySelector('#'+id)
     audio.play() ou audio.play(audio.src) src é o caminho do aúdio*/
-<<<<<<< HEAD
-    // refatorando funcao para usar em listas fora da função
-    document.querySelector(id).play();
-=======
     // refatorando funcao para usar em listas fora da função e de acordo com o vídeo do curso
     const elemento = document.querySelector(id);
     // validações
@@ -25,7 +21,6 @@ function tocar_audio(id){
         console.log('Elemento não encontrado ou seletor inválido')
     }
    
->>>>>>> parent of 911f301 (Criando pasta formacao-javascript-alura)
    
 }
 
@@ -42,8 +37,6 @@ for (let contador = 0 ;contador < ListaDeTeclas.length;contador ++) {
     tecla.onclick= function(){
         tocar_audio(idAudio);
     }
-<<<<<<< HEAD
-=======
     // adicionando outro evento, ao clicar muda a cor de fundo
     tecla.onkeydown = function(evento){
         console.log(evento.code)  // pegando a tecla do teclado
@@ -60,6 +53,5 @@ for (let contador = 0 ;contador < ListaDeTeclas.length;contador ++) {
     tecla.onkeyup = function () {
         ListaDeTeclas[contador].classList.remove('ativa')
     }
->>>>>>> parent of 911f301 (Criando pasta formacao-javascript-alura)
    
 }
