@@ -18,15 +18,23 @@ form.addEventListener("submit", (evento) => {
 
     const nome = evento.target.elements['nome']
     const quantidade = evento.target.elements['quantidade']
-    // objeto para o local storage
+    // pesquisando se o campo nome já existe no array itens 
+    const existe = itens.find( elemento => elemento.nome === nome.value)
     const itemAtual = {
-    "nome": nome.value,
-    "quantidade": quantidade.value
+        "nome": nome.value,
+        "quantidade": quantidade.value
+        }
+    if (existe) {
+        itemAtual.id = existe.id
+        atualizaElemento(itemAtual)
+        itens[itens.findIndex(elemento => elemento.id === existe.id)] = itemAtual
     }
-
-    criaElemento(itemAtual)
-
-    itens.push(itemAtual)
+    else {
+        itemAtual.id = itens[itens.length -1] ? (itens[itens.length-1]).id + 1 : 0;
+        criaElemento(itemAtual);
+        itens.push(itemAtual);
+    }
+   
     // usando localStorage para salvar dados no navegador
     // local storage só aceita string, por isso o JSON.stringify
     localStorage.setItem("itens", JSON.stringify(itens))
@@ -43,10 +51,40 @@ function criaElemento(item) {
     const numeroItem = document.createElement('strong')
     // innerHTML é o conteudo entre as tags, exemplo <strong> 5 </strong> o 5 é o conteúdo do innerHTMl
     numeroItem.innerHTML = item.quantidade
+    numeroItem.dataset.id = item.id
     // adicionando na tag li, a tag strong, ficando <li class="item"> <strong> quantidade </strong> </li>
     novoItem.appendChild(numeroItem)
     // adicionando o nome 
     novoItem.innerHTML += item.nome
     // adicionando a lista a variavel novoItem
     lista.appendChild(novoItem)
+    // adicionando botão 
+    novoItem.appendChild(BotaoDeleta(item.id))
+}
+
+function atualizaElemento(item){  
+    document.querySelector("[data-id='"+item.id+"']").innerHTML = item.quantidade
+
+}
+
+function BotaoDeleta(id_elemento){
+    // criando um botão
+    const elementoBotao = document.createElement('button')
+    elementoBotao.innerHTML = 'X'
+    // adicionando evento ao botao
+    elementoBotao.addEventListener('click',function(){
+        console.log(this) // retorna o botão clicado
+        // função de remover botão,  remove o pai do botão, no caso a lista e junto com ela o botão vai junto 
+        deletaElemento(this.parentElement,id_elemento) 
+    })
+    return elementoBotao
+}
+
+function deletaElemento(tag,id_elemento){
+    // removendo o código html
+    tag.remove()
+    // remover item do array
+    itens.splice(itens.findIndex(elemento => elemento.id === id_elemento), 1)
+    // escrevendo no local storage
+    localStorage.setItem("itens", JSON.stringify(itens))
 }
