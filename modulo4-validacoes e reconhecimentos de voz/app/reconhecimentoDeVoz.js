@@ -16,6 +16,7 @@ function onSpeak(e){
     chute = e.results[0][0].transcript
     console.log(e.results[0][0].transcript)
     exibeChuteNaTela(chute)
+    verificaseOChutePossuiUMValorValido(chute)
 }
 
 function exibeChuteNaTela( chute) {
@@ -25,3 +26,5 @@ function exibeChuteNaTela( chute) {
     `
 
 }
+// após terminar de usar o microfone starta ele denovo
+recognition.addEventListener('end', () => recognition.start())
