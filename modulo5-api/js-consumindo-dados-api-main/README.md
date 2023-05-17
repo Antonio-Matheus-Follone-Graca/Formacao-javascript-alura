@@ -1,2 +1,6 @@
+# Formacao-javascript-alura
+Formação javascript da alura: https://cursos.alura.com.br/formacao-javascript-front-end
 # js-consumindo-dados-api
-Repositório do treinamento "JavaScript: Consumindo e tratando dados de uma API" da Alura Cursos Online.
+Link do módulo: https://cursos.alura.com.br/course/javascript-consumindo-tratando-dados-api
+
+
