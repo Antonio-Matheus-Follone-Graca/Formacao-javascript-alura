@@ -1,22 +1,32 @@
-// acessando api via cep
-// fetch faz a requisição
-let consultaCep = fetch('https://viacep.com.br/ws/01001000/json')
-// então converte em json o resultado
-.then( resposta => resposta.json()
-// então mostra os dados no console.log
-.then( r => {
-    // se apresentar um erro nos dados, esse if está na documentação do api viacep 
-    if (r.erro){
-        throw Error('Esse cep não existe!')
+// usando função assíncrona para usar callbacks chamadas de api
+async function buscaEndereco(cep){
+    try{
+        // chamando api viacep
+        let consultaCep = await fetch(`https://viacep.com.br/ws/${cep}/json`);
+        // convertendo para json
+        let consultaCepConvertida = await consultaCep.json();
+        // se houver um erro nos dados
+        if(consultaCepConvertida.erro){
+            throw Error('cep não existente!');
+        }
+        else{
+            console.log(consultaCepConvertida);
+        }
+        return consultaCepConvertida
     }
-    else{
-        console.log(r)
+    // se houver um erro na requisição
+    catch(erro){
+        console.log(erro);
     }
-    
-}))
-// se der um erro na requisição, mostra o erro no console.log
-.catch(erro => console.log(erro))
-// após o fim da requisição, tendo sucesso ou não com a requisição
-.finally(mensagem => console.log('processamento concluído !'));
+   
+}
 
-console.log(consultaCep)
+var cep = document.getElementById('cep');
+// ao evento focusout no id cep chama a função buscaEndereco
+cep.addEventListener('focusout', () =>{
+    // colocando o value do cep
+    buscaEndereco(cep.value)
+})
+
+
+
