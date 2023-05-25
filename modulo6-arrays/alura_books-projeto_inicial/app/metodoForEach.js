@@ -1,6 +1,8 @@
 // para separar os arquivos
 const elementoParaInserirLivros = document.getElementById('livros')
 function exibirOsLivrosNaTela(listaDeLivros){
+    // limpando tela
+    elementoParaInserirLivros.innerHTML = ''
     listaDeLivros.forEach(livro => {
         // inserindo livros no html
         elementoParaInserirLivros.innerHTML +=`
