@@ -14,6 +14,12 @@
 * HTML
 * CSS
 
+##  Formacao-javascript-alura
+Formação javascript da alura: https://cursos.alura.com.br/formacao-javascript-front-end
+
+## Criando requisições com javascript
+Link do módulo: https://cursos.alura.com.br/course/javascript-criando-requisicoes
+
 ## Screenshots
 ![Screenshot da tela inicial do AluraPlay](https://imgur.com/aymxEsh.png)
 ![Screenshot da tela do formulário do AluraPlay](https://imgur.com/ShNADf2.png)
