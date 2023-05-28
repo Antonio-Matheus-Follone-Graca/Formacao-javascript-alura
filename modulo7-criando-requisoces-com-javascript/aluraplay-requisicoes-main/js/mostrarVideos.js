@@ -29,13 +29,19 @@ export default function constroiCard(titulo,descricao,url,imagem) {
 
 // função que faz a conexão com a api. Obrigatório usar async e await 
 async function listaVideo() {
-    // chamando a função do import. Variável conectaApi que possui o método de conexão(nesse caso) que foi exportada no conectaApi.js 
-    const listApi = await conectaApi.listaVideos();
-    // percorrendo cada item da lista de api, pois a api retorna um array
-    // e colocando html dentro da lista
-    // a cada passagem de array, executa a função(adiciona o html )
-    // lista da linha 5. appendChild adiciona o filho do elemento, nesse caso dentro de ul 
-    listApi.forEach(elemento => lista.appendChild(constroiCard(elemento.titulo,elemento.descricao,elemento.url,elemento.imagem)));
+    // tentanto fazer a listagem de video
+    try{
+        // chamando a função do import. Variável conectaApi que possui o método de conexão(nesse caso) que foi exportada no conectaApi.js 
+        const listApi = await conectaApi.listaVideos();
+        // percorrendo cada item da lista de api, pois a api retorna um array
+        // e colocando html dentro da lista
+        // a cada passagem de array, executa a função(adiciona o html )
+        // lista da linha 5. appendChild adiciona o filho do elemento, nesse caso dentro de ul 
+        listApi.forEach(elemento => lista.appendChild(constroiCard(elemento.titulo,elemento.descricao,elemento.url,elemento.imagem)));
+    }
+    catch {
+        lista.innerHTML = `<h2 class="mensagem_titulo"> Não foi possível carregar a lista de vídeos </h2>`
+    }
 
 }
 

@@ -20,6 +20,11 @@ async function buscarVideo(evento) {
     }
     // percorrendo cada elemento da busca e colocando html na lista do termo pesquisado
     busca.forEach(elemento => lista.appendChild(constroiCard(elemento.titulo,elemento.descricao,elemento.url,elemento.imagem)));
+
+    // validação se não achar nada
+    if (busca.length == 0) {
+        lista.innerHTML = `<h2 class="mensagem_titulo"> Não existem vídeos com esse termo </h2>`
+    }
 }
 
 // pegando botão de pesquisar com o data atribute

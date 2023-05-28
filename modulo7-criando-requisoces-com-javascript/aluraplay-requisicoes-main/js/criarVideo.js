@@ -15,9 +15,16 @@ async function criarVideo(evento) {
     // descrição seu valor será aleatório pois não possui um contador de visualizações o projeto
     const descricao = Math.floor(Math.random()*10).toString();
     // conectando a api e chamando a funcao cria video do conectaApi.js
-    await conectaApi.criaVideo(titulo,descricao,url,imagem);
-    // redirecionando página
-    window.location.href = '../pages/envio-concluido.html'
+    
+    try {
+        await conectaApi.criaVideo(titulo,descricao,url,imagem);
+        // redirecionando página
+        window.location.href = '../pages/envio-concluido.html'
+    }
+    catch(error) {
+        alert(error);
+    }
+    
 
 }
 
