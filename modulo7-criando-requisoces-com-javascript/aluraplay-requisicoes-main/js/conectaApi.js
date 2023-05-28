@@ -27,16 +27,27 @@ async function criaVideo(titulo,descricao,url,imagem) {
 
         })
     });
+    if (!conexao.ok){
+        throw new Error('Não foi possível enviar o vídeo')
+    }
     // convertendo para json a conexao com api
     const conexaoConvertida = await conexao.json() 
     return conexaoConvertida
 }
 
+async function buscaVideo (termoDeBusca) {
+    const conexao = await fetch(`http://localhost:3000/videos?q=${termoDeBusca}`);
+    // convertendo para json a conexao com api
+    const conexaoConvertida = await conexao.json() ;
+    return conexaoConvertida; 
+}
+
 // exportando função. Variável com a função.
 //Exportar funções é uma ótima maneira de transferi-las para outros programas. Também pode ser usado quando você deseja criar bibliotecas reutilizáveis
 
-// essa variável será utilizada em vários arquivos para conexão com api e cria video
+// essa variável será utilizada em vários arquivos para conexão com api, cria video e buscar video
 export const conectaApi = {
     listaVideos,
-    criaVideo
+    criaVideo,
+    buscaVideo
 }

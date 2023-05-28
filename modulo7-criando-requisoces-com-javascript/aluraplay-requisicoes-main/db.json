@@ -84,13 +84,26 @@
       "imagem": "https://purr.objects-us-east-1.dream.io/i/OoNx6.jpg",
       "id": 12
     },
-
     {
       "titulo": "Logs no Android: boas práticas para otimização e aplicação",
       "descricao": "7 mil visualizações",
       "url": "https://www.youtube.com/embed/viRW15_qUZw",
       "imagem": "https://purr.objects-us-east-1.dream.io/i/OoNx6.jpg",
       "id": 13
+    },
+    {
+      "titulo": "Conhecendo o NestJs",
+      "descricao": "5 mil visualizações",
+      "url": "https://www.youtube.com/embed/viRW15_qUZw",
+      "imagem": "https://purr.objects-us-east-1.dream.io/i/OoNx6.jpg",
+      "id": 14
+    },
+    {
+      "titulo": "teste",
+      "descricao": "5 mil visualizações",
+      "url": "https://www.youtube.com/embed/viRW15_qUZw",
+      "imagem": "https://purr.objects-us-east-1.dream.io/i/OoNx6.jpg",
+      "id": 15
     }
   ]
 }
