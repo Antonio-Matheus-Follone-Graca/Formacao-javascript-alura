@@ -5,7 +5,9 @@ import { conectaApi } from "./conectaApi.js";
 const lista = document.querySelector('[data-lista]');
 
 // função que coloca os vídeos na index.html
-function constroiCard(titulo,descricao,url,imagem) {
+
+// exportando essa função para usa-la no buscarVideo.js
+export default function constroiCard(titulo,descricao,url,imagem) {
     // criando elemento
     const video = document.createElement('li');
     // adicionando classe
