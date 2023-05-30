@@ -2,8 +2,33 @@ import ehUmCPF from "./valida-cpf.js";
 import ehMaiorDeIdade from "./valida-idade.js";
 // selecionando todos os elementos que tiveram os elementos required dos inputs. required é um data atributte
 const camposDoFormulario = document.querySelectorAll('[required]');
+// selecionando formulário atráves do
+const formulario = document.querySelector('[data-formulario]');
+
+formulario.addEventListener('submit',(e) =>{
+    // impedindo o submit de atualizar a página para poder pegar os elementos
+    e.preventDefault();
+    // usando local storage
+    const listaRespostas = {
+        // campo do storage: valor dos campos do formulário
+        // pegando valores dos campos do formulário atráves dos evento e
+        "nome": e.target.elements["nome"].value,
+        "email": e.target.elements["email"].value,
+        "rg": e.target.elements["rg"].value,
+        "cpf": e.target.elements["cpf"].value,
+        "aniversario": e.target.elements["aniversario"].value,
+    }
+    // criando local storage e adicionado um valor nele
+    // nome do storage cadastro e convertendo os dados para uma string json
+    localStorage.setItem('cadastro', JSON.stringify(listaRespostas))
+    // redirecionando página
+    window.location.href = "./abrir-conta-form-2.html";
+})
+
+
+
 //console.log(camposDoFormulario); retorna um array com todos os elementos
-//percorrendo todos os campos
+//percorrendo todos os campos com elemento required
 camposDoFormulario.forEach((campo) =>{
     // ao evento blur de cada campo, chama a função verificaCampo()
     campo.addEventListener('blur',() => verificaCampo(campo));
